@@ -20,8 +20,8 @@ namespace ТТТ
         private void button1_Click(object sender, EventArgs e)
         {
             //MessageBox.Show(sender.GetType().GetProperty("Name").GetValue(sender).ToString());
-            sender.GetType().GetProperty("text").SetValue(sender, "x");
-
+            //sender.GetType().GetProperty("text").SetValue(sender, "x");
+            
         }
     }
 }
