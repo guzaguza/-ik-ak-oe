@@ -47,6 +47,49 @@ namespace ТТТ
             
             checkWin();
         }
+
+        private void Clear()
+        {
+            button1.Tag = null;
+            button2.Tag = null;
+            button3.Tag = null;
+            button4.Tag = null;
+            button5.Tag = null;
+            button6.Tag = null;
+            button7.Tag = null;
+            button8.Tag = null;
+            button9.Tag = null;
+
+            button1.Image = null;
+            button2.Image = null;
+            button3.Image = null;
+            button4.Image = null;
+            button5.Image = null;
+            button6.Image = null;
+            button7.Image = null;
+            button8.Image = null;
+            button9.Image = null;
+
+            button1.Text = null;
+            button2.Text = null;
+            button3.Text = null;
+            button4.Text = null;
+            button5.Text = null;
+            button6.Text = null;
+            button7.Text = null;
+            button8.Text = null;
+            button9.Text = null;
+
+            button1.Click += this.button1_Click;
+            button2.Click += this.button1_Click;
+            button3.Click += this.button1_Click;
+            button4.Click += this.button1_Click;
+            button5.Click += this.button1_Click;
+            button6.Click += this.button1_Click;
+            button7.Click += this.button1_Click;
+            button8.Click += this.button1_Click;
+            button9.Click += this.button1_Click;
+        }
         private void checkWin()
         {
 
@@ -74,16 +117,19 @@ namespace ТТТ
                     button1.Tag != null && button2.Tag != null && button3.Tag != null)
                 {
                     winMsg(button2);
+                    Clear();
                 }
                 if ((button4.Tag == button5.Tag && button5.Tag == button6.Tag) &&
                     button4.Tag != null && button5.Tag != null && button6.Tag != null)
                 {
                     winMsg(button5);
+                    Clear();
                 }
                 if ((button7.Tag == button8.Tag && button8.Tag == button9.Tag) &&
                     button7.Tag != null && button8.Tag != null && button9.Tag != null)
                 {
                     winMsg(button8);
+                    Clear();
                 }
 
 
@@ -93,16 +139,19 @@ namespace ТТТ
                     button1.Tag != null && button4.Tag != null && button7.Tag != null)
                 {
                     winMsg(button4);
+                    Clear();
                 }
                 if ((button2.Tag == button5.Tag && button5.Tag == button8.Tag) &&
                     button2.Tag != null && button5.Tag != null && button8.Tag != null)
                 {
                     winMsg(button5);
+                    Clear();
                 }
                 if ((button3.Tag == button6.Tag && button6.Tag == button9.Tag) &&
                     button3.Tag != null && button6.Tag != null && button9.Tag != null)
                 {
                     winMsg(button6);
+                    Clear();
                 }
 
 
@@ -111,13 +160,19 @@ namespace ТТТ
                     button1.Tag != null && button5.Tag != null && button9.Tag != null)
                 {
                     winMsg(button5);
+                    Clear();
                 }
                 if ((button3.Tag == button5.Tag && button5.Tag == button7.Tag) &&
                     button1.Tag != null && button5.Tag != null && button7.Tag != null)
                 {
                     winMsg(button5);
+                    Clear();
                 }
+
+
             
+
+
         }
     }
 }
