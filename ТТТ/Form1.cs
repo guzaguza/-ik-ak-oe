@@ -18,7 +18,9 @@ namespace ТТТ
             InitializeComponent();
             player = 1;
             label1.Text = "Ходит игрок 1";
+            
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -28,15 +30,15 @@ namespace ТТТ
             {
                 
                 case 1:
-                    sender.GetType().GetProperty("Text").SetValue(sender, "X");
-                    //sender.GetType().GetProperty("Image").SetValue(sender, Image.FromFile(@"C:\Repositories\ТТТ\ТТТ\icon\cross1.png"));
+                    //sender.GetType().GetProperty("Text").SetValue(sender, "X");
+                    sender.GetType().GetProperty("Image").SetValue(sender, Image.FromFile(@"C:\Repositories\ТТТ\ТТТ\icon\cross1.png"));
                     player = 0;
                     btn.GetType().GetProperty("Tag").SetValue(sender, "1");
                     label1.Text = "Ходит игрок 2";
                     break;
                 case 0:
-                    sender.GetType().GetProperty("Text").SetValue(sender, "○");
-                    //sender.GetType().GetProperty("Image").SetValue(sender, Image.FromFile(@"C:\Repositories\ТТТ\ТТТ\icon\circle1.png"));
+                    //sender.GetType().GetProperty("Text").SetValue(sender, "○");
+                    sender.GetType().GetProperty("Image").SetValue(sender, Image.FromFile(@"C:\Repositories\ТТТ\ТТТ\icon\circle1.png"));
                     player = 1;
                     btn.GetType().GetProperty("Tag").SetValue(sender, "0");
                     label1.Text = "Ходит игрок 1";
@@ -45,7 +47,7 @@ namespace ТТТ
             
             btn.Click -= new EventHandler(this.button1_Click);
             
-            checkWin();
+            checkWin();          
         }
 
         private void Clear()
@@ -89,6 +91,21 @@ namespace ТТТ
             button7.Click += this.button1_Click;
             button8.Click += this.button1_Click;
             button9.Click += this.button1_Click;
+
+            
+        }
+        private void fullCheck()
+        {
+            if (button1.Tag != null &&
+                button2.Tag != null &&
+                button3.Tag != null &&
+                button4.Tag != null &&
+                button5.Tag != null &&
+                button6.Tag != null &&
+                button7.Tag != null &&
+                button8.Tag != null &&
+                button9.Tag != null)
+                Clear();
         }
         private void checkWin()
         {
@@ -173,6 +190,11 @@ namespace ТТТ
             
 
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            fullCheck();
         }
     }
 }
