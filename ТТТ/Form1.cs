@@ -11,87 +11,113 @@ using System.Windows.Forms;
 namespace ТТТ
 {
     public partial class Form1 : Form
-    { 
-
+    {        
         private int player;
-    
         public Form1()
         {
             InitializeComponent();
             player = 1;
             label1.Text = "Ходит игрок 1";
-
-
-        
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Button btn = (Button)sender;
+
             switch (player)
             {
+                
                 case 1:
-                    sender.GetType().GetProperty("Image").SetValue(sender, Image.FromFile(@"C:\Repositories\ТТТ\ТТТ\icon\cross1.png"));
+                    sender.GetType().GetProperty("Text").SetValue(sender, "X");
+                    //sender.GetType().GetProperty("Image").SetValue(sender, Image.FromFile(@"C:\Repositories\ТТТ\ТТТ\icon\cross1.png"));
                     player = 0;
+                    btn.GetType().GetProperty("Tag").SetValue(sender, "1");
                     label1.Text = "Ходит игрок 2";
-
                     break;
                 case 0:
-                    sender.GetType().GetProperty("Image").SetValue(sender, Image.FromFile(@"C:\Repositories\ТТТ\ТТТ\icon\circle1.png"));
+                    sender.GetType().GetProperty("Text").SetValue(sender, "○");
+                    //sender.GetType().GetProperty("Image").SetValue(sender, Image.FromFile(@"C:\Repositories\ТТТ\ТТТ\icon\circle1.png"));
                     player = 1;
+                    btn.GetType().GetProperty("Tag").SetValue(sender, "0");
                     label1.Text = "Ходит игрок 1";
-
                     break;
             }
-            //sender.GetType().GetProperty("Enabled").SetValue(sender, false);
-            Button btn = (Button)sender;
-            btn.Click -= new System.EventHandler(this.button1_Click);
-            //checkWin();
+            
+            btn.Click -= new EventHandler(this.button1_Click);
+            
+            checkWin();
         }
+        private void checkWin()
+        {
 
-        //private void checkWin()
-        //{
-        //    string msg = "Вы победили!";
+            
 
-        //    //Проверка строк
-        //    if ((button1.Image == button2.Image && button2.Image == button3.Image) && (button2.Image != null))
-        //    {
-        //            MessageBox.Show(msg);
-        //    }
-        //    if ((button4.Image == button5.Image && button5.Image == button6.Image) && (button5.Image != null))
-        //    {
-        //            MessageBox.Show(msg);
-        //    }
-        //    if ((button7.Image == button8.Image && button8.Image == button9.Image) && (button8.Image != null))
-        //    {
-        //            MessageBox.Show(msg);
-        //    }
+            void winMsg(Button btn1)
+            {
+                string q = btn1.Tag.ToString();
+                int i = int.Parse(q);
+                if (i == 1)
+                {
+                    MessageBox.Show("Победил Игрок 1!");
+                }
+                else if (i == 0)
+                {
+                    MessageBox.Show("Победил Игрок 2!");
+                }
+
+            }
+
+            
+                
+                //Проверка строк              
+                if ((button1.Tag == button2.Tag && button2.Tag == button3.Tag) &&
+                    button1.Tag != null && button2.Tag != null && button3.Tag != null)
+                {
+                    winMsg(button2);
+                }
+                if ((button4.Tag == button5.Tag && button5.Tag == button6.Tag) &&
+                    button4.Tag != null && button5.Tag != null && button6.Tag != null)
+                {
+                    winMsg(button5);
+                }
+                if ((button7.Tag == button8.Tag && button8.Tag == button9.Tag) &&
+                    button7.Tag != null && button8.Tag != null && button9.Tag != null)
+                {
+                    winMsg(button8);
+                }
 
 
-        //    //Проверка столбцов
-        //    if ((button1.Image == button4.Image && button4.Image == button7.Image) && (button4.Image != null))
-        //    {
-        //            MessageBox.Show(msg);
-        //    }
-        //    if ((button2.Image == button5.Image && button5.Image == button8.Image) && (button5.Image != null))
-        //    {
-        //            MessageBox.Show(msg);
-        //    }
-        //    if ((button3.Image == button6.Image && button6.Image == button9.Image) && (button6.Image != null))
-        //    {
-        //            MessageBox.Show(msg);
-        //    }
+
+                //Проверка столбцов
+                if ((button1.Tag == button4.Tag && button4.Tag == button7.Tag) &&
+                    button1.Tag != null && button4.Tag != null && button7.Tag != null)
+                {
+                    winMsg(button4);
+                }
+                if ((button2.Tag == button5.Tag && button5.Tag == button8.Tag) &&
+                    button2.Tag != null && button5.Tag != null && button8.Tag != null)
+                {
+                    winMsg(button5);
+                }
+                if ((button3.Tag == button6.Tag && button6.Tag == button9.Tag) &&
+                    button3.Tag != null && button6.Tag != null && button9.Tag != null)
+                {
+                    winMsg(button6);
+                }
 
 
-        //    //Проверка диагоналей
-        //    if ((button1.Image == button5.Image && button5.Image == button9.Image) && (button5.Image != null))
-        //    {
-        //            MessageBox.Show(msg);
-        //    }
-        //    if ((button3.Image == button5.Image && button5.Image == button7.Image) && (button5.Image != null))
-        //    {               
-        //            MessageBox.Show(msg);
-        //    }      
-        //}
+                //Проверка диагоналей
+                if ((button1.Tag == button5.Tag && button5.Tag == button9.Tag) &&
+                    button1.Tag != null && button5.Tag != null && button9.Tag != null)
+                {
+                    winMsg(button5);
+                }
+                if ((button3.Tag == button5.Tag && button5.Tag == button7.Tag) &&
+                    button1.Tag != null && button5.Tag != null && button7.Tag != null)
+                {
+                    winMsg(button5);
+                }
+            
+        }
     }
 }
