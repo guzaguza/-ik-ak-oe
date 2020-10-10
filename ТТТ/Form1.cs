@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ТТТ
+namespace TicTacToe
 {
     public partial class Form1 : Form
     {        
@@ -25,20 +25,22 @@ namespace ТТТ
         private void button1_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
+            Bitmap circle = Properties.Resources.circle1;
+            Bitmap cross = Properties.Resources.cross1;
 
             switch (player)
             {
                 
                 case 1:
                     //sender.GetType().GetProperty("Text").SetValue(sender, "X");
-                    sender.GetType().GetProperty("Image").SetValue(sender, Image.FromFile(@"C:\Repositories\ТТТ\ТТТ\icon\cross1.png"));
+                    sender.GetType().GetProperty("Image").SetValue(sender, cross);
                     player = 0;
                     btn.GetType().GetProperty("Tag").SetValue(sender, "1");
                     label1.Text = "Ходит игрок 2";
                     break;
                 case 0:
                     //sender.GetType().GetProperty("Text").SetValue(sender, "○");
-                    sender.GetType().GetProperty("Image").SetValue(sender, Image.FromFile(@"C:\Repositories\ТТТ\ТТТ\icon\circle1.png"));
+                    sender.GetType().GetProperty("Image").SetValue(sender, circle);
                     player = 1;
                     btn.GetType().GetProperty("Tag").SetValue(sender, "0");
                     label1.Text = "Ходит игрок 1";
@@ -96,15 +98,7 @@ namespace ТТТ
         }
         private void fullCheck()
         {
-            if (button1.Tag != null &&
-                button2.Tag != null &&
-                button3.Tag != null &&
-                button4.Tag != null &&
-                button5.Tag != null &&
-                button6.Tag != null &&
-                button7.Tag != null &&
-                button8.Tag != null &&
-                button9.Tag != null)
+
                 Clear();
         }
         private void checkWin()
